@@ -1,4 +1,4 @@
-const {succeed, fail, repair, get} = require("./enhancer.js");
+const {succeed, fail, repair} = require("./enhancer.js");
 
 describe("succeed()", () => {
     it("should enhance by 1", () => {
@@ -11,6 +11,26 @@ describe("succeed()", () => {
             durability: 12,
             enhancement: 11
         })
+    })
+
+    it("does not change enhancement level === 20", () => {
+        expect(succeed( {
+            name: "Name",
+            durability: 12,
+            enhancement: 20
+        })).toEqual({
+            name: "Name",
+            durability: 12,
+            enhancement: 20
+        })
+    })
+
+    it("cannot exceed enhancement of 20", () => {
+        expect(succeed( {
+            name: "Name",
+            durability: 12,
+            enhancement: 21
+        })).toEqual("Enhancement level cannot exceed 20")
     })
 })
 

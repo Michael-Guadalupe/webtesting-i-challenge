@@ -8,10 +8,12 @@ module.exports = {
 function succeed(item) {
   const enhancement = item.enhancement;
 
-  if(enhancement < 20) {
+  if(enhancement < 20 && enhancement > -1) {
     return {...item, enhancement: enhancement +1}
-  } else {
+  } else if (enhancement === 20){
     return { ...item };
+  } else {
+    return "Enhancement level cannot exceed 20";
   }
 }
 
