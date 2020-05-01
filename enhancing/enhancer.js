@@ -31,7 +31,6 @@ function fail(item) {
     enhancement -= 1;
   }
   return { ...item, enhancement: enhancement, durability: durability };
-  // return { ...item, enhancement, durability };
 }
 
 
@@ -40,6 +39,8 @@ function repair(item) {
   const durability = item.durability;
 
   if (durability < 100) {
+    console.log("durability", durability);
+    console.log("Item", item);
     return {...item, durability: 100}
   } else {
     return { ...item };
@@ -49,3 +50,9 @@ function repair(item) {
 function get(item) {
   return { ...item };
 }
+
+//test result needs to be a diff object than the original object and original object remains unchanged
+//negative durability?
+//negative enhancement?
+//weird edge cases
+//difference between reference and value
